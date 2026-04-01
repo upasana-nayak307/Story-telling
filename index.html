@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Shadow Path</title>
+  <link href="./style.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+ </head>
+ <body class="h-full w-full overflow-auto" style="font-family:'Crimson Text',serif; color:#e0d8f0;">
+  <!-- Background -->
+  <div id="scene-bg" class="scene-bg" style="background:radial-gradient(ellipse at 30% 20%,#2a1a4e 0%,#1A1135 50%,#0d0a1a 100%)"></div>
+  <!-- Stars -->
+  <div id="stars" class="fixed top-0 left-0 w-full h-full pointer-events-none" style="z-index:1"></div>
+  <!-- Orbs -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none" style="z-index:1">
+   <div class="orb" style="width:300px;height:300px;background:#6ECBF5;top:10%;left:60%;animation-delay:-3s"></div>
+   <div class="orb" style="width:200px;height:200px;background:#F4D483;top:70%;left:20%;animation-delay:-7s"></div>
+   <div class="orb" style="width:250px;height:250px;background:#8b5cf6;top:40%;left:80%;animation-delay:-11s"></div>
+  </div>
+  <!-- Main Content -->
+  <div class="relative w-full h-full flex flex-col items-center justify-center p-4 sm:p-8" style="z-index:2">
+    <!-- Restart --> 
+     <button id="restart-btn" onclick="goToScene('start')" 
+      class="restart-btn fixed top-4 right-4 sm:top-6 sm:right-6 text-gray-400 cursor-pointer bg-transparent border-none hidden" style="z-index:10" aria-label="Restart story"> 
+      <i data-lucide="rotate-ccw" style="width:22px;height:22px"></i> 
+    </button> 
+    <!-- Progress -->
+   <div id="progress" class="fixed top-4 left-1/2 -translate-x-1/2 flex gap-2 hidden" style="z-index:10"></div>
+   <!-- Content -->
+   <div id="content-area" class="w-full max-w-2xl mx-auto flex flex-col items-center text-center">
+   </div>
+  </div>
+<script src="./app.js"></script>
+</body>
+</html>

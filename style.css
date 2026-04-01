@@ -1,0 +1,87 @@
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes pulseGlow { 0%,100%{box-shadow:0 0 15px rgba(110,203,245,0.3),0 0 30px rgba(110,203,245,0.1)} 50%{box-shadow:0 0 25px rgba(110,203,245,0.5),0 0 50px rgba(110,203,245,0.2)} }
+@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+@keyframes starTwinkle { 0%,100%{opacity:0.2} 50%{opacity:1} }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+@keyframes orbFloat { 0%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.1)} 66%{transform:translate(-20px,10px) scale(0.9)} 100%{transform:translate(0,0) scale(1)} }
+
+.scene-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    transition: background 1.5s ease;
+    z-index: 0;
+}
+
+.star {
+    position: absolute; width: 2px; height: 2px; background: #F4D483;
+    border-radius: 50%; animation: starTwinkle var(--dur) ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.orb {
+    position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.15;
+    animation: orbFloat 12s ease-in-out infinite;
+}
+
+.choice-btn {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, rgba(110,203,245,0.1), rgba(244,212,131,0.05));
+    border: 1px solid rgba(110,203,245,0.3);
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    animation: pulseGlow 3s ease-in-out infinite;
+    animation-play-state: paused;
+}
+.choice-btn:hover {
+    border-color: rgba(244,212,131,0.6);
+    background: linear-gradient(135deg, rgba(110,203,245,0.2), rgba(244,212,131,0.1));
+    transform: translateY(-2px);
+    animation-play-state: running;
+}
+.choice-btn::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    transition: left 0.6s;
+}
+.choice-btn:hover::before { left: 100%; }
+
+.story-text { line-height: 1.9; }
+
+.fade-in { animation: fadeInUp 0.8s ease forwards; }
+.fade-in-delay-1 { animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0; }
+.fade-in-delay-2 { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
+.fade-in-delay-3 { animation: fadeInUp 0.8s ease 0.6s forwards; opacity: 0; }
+
+.gold-shimmer {
+    background: linear-gradient(90deg, #F4D483, #fff5d4, #F4D483);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+}
+
+.progress-pip {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(110,203,245,0.2); border: 1px solid rgba(110,203,245,0.3);
+    transition: all 0.5s ease;
+}
+.progress-pip.active {
+    background: #6ECBF5; box-shadow: 0 0 10px rgba(110,203,245,0.5);
+}
+.progress-pip.visited {
+    background: rgba(244,212,131,0.5); border-color: rgba(244,212,131,0.5);
+}
+
+.restart-btn {
+    transition: all 0.3s ease;
+}
+.restart-btn:hover {
+    color: #F4D483; transform: rotate(-30deg);
+}
+#content-area { 
+    transition: opacity 0.5s ease; 
+}
+body { 
+    box-sizing: border-box; 
+}
